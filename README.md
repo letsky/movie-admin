@@ -101,6 +101,28 @@
 | id     | int      | 是       | 类别id   |
 | name   | String   | 是       | 类别名称 |
 
+#### 上传图片
+
+请求方式：POST
+
+请求头：Content-Type: multipart/form-data
+
+请求地址：/upload
+
+请求参数：
+
+| 参数值 | 参数类型 | 是否必须 | 说明 |
+| ------ | -------- | -------- | ---- |
+| file   | file     | 是       | 图片 |
+
+返回数据：
+
+```json
+{
+    "http://image-url.com"
+}
+```
+
 #### 创建电影
 
 请求方式：POST

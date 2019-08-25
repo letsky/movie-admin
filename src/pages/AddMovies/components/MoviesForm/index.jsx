@@ -30,25 +30,10 @@ const list = [
   }
 ];
 
-function onPreview(info) {
-  console.log("onPreview callback : ", info);
-}
-
-function onChange(info) {
-  console.log("onChange callback : ", info);
-}
-
-function onSuccess(res, file) {
-  console.log("onSuccess callback : ", res, file);
-}
-
-function onError(file) {
-  console.log("onError callback : ", file);
-}
-
 export default function MoviesForm() {
   const [categories, setCategories] = useState([]);
   const formEl = useRef(null);
+  const [images, setImages] = useState(null);
 
   const formChange = value => {
     console.log("value", value);
@@ -75,7 +60,12 @@ export default function MoviesForm() {
       if (errors) {
         return;
       }
-      API.post("/movies", values)
+      let data = values;
+      data.poster = images;
+      console.log("data" + JSON.stringify(data));
+      API.post("/movies", JSON.stringify(data), {
+        headers: { "Content-Type": "application/json" }
+      })
         .then(res => {
           if (res.status == 200) {
             Message.success("提交成功");
@@ -85,9 +75,24 @@ export default function MoviesForm() {
           console.log(err);
           Message.error("参数错误");
         });
-      console.log({ values });
     });
   };
+
+  function onPreview(info) {
+    console.log("onPreview callback : ", info);
+  }
+
+  function onSuccess(res, file) {
+    console.log(res.response[0]);
+    console.log("onSuccess callback : ", res, file);
+    setImages(res.response[0]);
+    Message.success("上传成功");
+  }
+
+  function onError(file) {
+    Message.error("上传失败");
+    console.log("onError callback : ", file);
+  }
 
   return (
     <div>
@@ -107,10 +112,11 @@ export default function MoviesForm() {
             <div className={styles.formLabel}>电影海报：</div>
             <Upload.Card
               listType="card"
-              action="https://www.easy-mock.com/mock/5b713974309d0d7d107a74a3/alifd/upload"
+              action="http://127.0.0.1:8080/upload"
               accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
+              name="file"
+              limit={1}
               onPreview={onPreview}
-              onChange={onChange}
               onSuccess={onSuccess}
               onError={onError}
             />
