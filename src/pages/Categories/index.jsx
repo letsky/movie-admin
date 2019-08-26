@@ -5,7 +5,7 @@ import Table from "./components/Table";
 
 function Caregories(props) {
   const handleClick = () => {
-    props.history.push("add/caregories");
+    props.history.push("add/categories");
   };
 
   return (

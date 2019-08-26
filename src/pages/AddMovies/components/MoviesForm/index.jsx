@@ -21,11 +21,11 @@ import API from "@/api";
 
 const list = [
   {
-    value: "off",
+    value: 0,
     label: "未上映"
   },
   {
-    value: "on",
+    value: 1,
     label: "上映"
   }
 ];
@@ -101,11 +101,11 @@ export default function MoviesForm() {
         <IceFormBinderWrapper onChange={formChange} ref={formEl}>
           <div className={styles.formItem}>
             <div className={styles.formLabel}>电影名称：</div>
-            <IceFormBinder name="movieName" required message="名称必填">
+            <IceFormBinder name="name" required message="名称必填">
               <Input placeholder="请输入电影名称" style={{ width: "400px" }} />
             </IceFormBinder>
             <div className={styles.formError}>
-              <IceFormError name="movieName" />
+              <IceFormError name="name" />
             </div>
           </div>
           <div className={styles.formItem}>
