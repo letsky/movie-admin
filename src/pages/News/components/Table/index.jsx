@@ -40,7 +40,7 @@ export default function MoviesTable() {
       title: "提示",
       content: "确认删除吗",
       onOk: () => {
-        API.delete(`/movies/${id}`)
+        API.delete(`/news/${id}`)
           .then(res => {
             if (res.status == 200) {
               Message.success("删除成功");

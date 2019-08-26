@@ -112,7 +112,7 @@ export default function MoviesForm() {
             <div className={styles.formLabel}>电影海报：</div>
             <Upload.Card
               listType="card"
-              action="http://127.0.0.1:8080/upload"
+              action="http://127.0.0.1:8080/api/upload"
               accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
               name="file"
               limit={1}
