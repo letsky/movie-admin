@@ -119,7 +119,7 @@
 
 ```json
 {
-    "http://image-url.com"
+    "url": "http://image-url.com"
 }
 ```
 
@@ -136,6 +136,7 @@
 ```json
 {
   "name": "name",
+  "poster": "http://image-url.com",
   "duration": 123,
   "directors": "",
   "actors": "",
@@ -151,6 +152,7 @@
 | 参数值      | 参数类型    | 是否必须 | 说明                 |
 | ----------- | ----------- | -------- | -------------------- |
 | name        | String      | 是       | 电影名称             |
+| poster      | String      | 是       | 海报链接             |
 | duration    | int         | 是       | 时长                 |
 | directors   | String      | 是       | 导演                 |
 | actors      | String      | 是       | 演员                 |

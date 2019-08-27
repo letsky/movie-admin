@@ -83,9 +83,9 @@ export default function MoviesForm() {
   }
 
   function onSuccess(res, file) {
-    console.log(res.response[0]);
+    console.log(res.response);
     console.log("onSuccess callback : ", res, file);
-    setImages(res.response[0]);
+    setImages(res.response.url);
     Message.success("上传成功");
   }
 
